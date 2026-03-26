@@ -1,10 +1,10 @@
 {
   "name": "gis-webmap",
   "version": "1.0.0",
-  "description": "Project for the Web Development part of the GIS lessons 2025.",
+  "description": "Project for the Web Development part of the GIS lessons 2026.",
   "scripts": {
     "start": "vite --base=./",
-    "build-production": "vite build --base=/polimi-webgis-class-2025/",
+    "build-production": "vite build --base=/polimi-webgis-class-2026/",
     "build-local": "vite build",
     "preview": "vite preview --base=./"
   },

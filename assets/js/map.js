@@ -14,15 +14,12 @@ import { Style, Fill, Stroke } from 'ol/style';
 
 // OpenStreetMap base map
 let osm = new Tile({
-    title: "Open Street Map",
-    type: "base",
     visible: true,
     source: new OSM()
 });
 
 // Colombia Administrative Boundaries
 let colombiaBoundary = new Image({
-    title: "Colombia Administrative level 0",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/wms',
         params: { 'LAYERS': 'gis:COL_adm0' }
@@ -32,7 +29,6 @@ let colombiaBoundary = new Image({
 
 // Colombia Administrative level 1
 var colombiaDepartments = new Image({
-    title: "Colombia Administrative level 1",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/wms',
         params: { 'LAYERS': 'gis:COL_adm1' }
@@ -43,7 +39,6 @@ var colombiaDepartments = new Image({
 
 // Colombia Roads
 var colombiaRoads = new Image({
-    title: "Colombia Roads",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/wms',
         params: { 'LAYERS': 'gis:COL_roads' }
@@ -53,8 +48,6 @@ var colombiaRoads = new Image({
 
 // Colombia Rivers
 var colombiaRivers = new Image({
-    title: "Colombia Rivers",
-    type: "overlay",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/wms',
         params: { 'LAYERS': 'gis:COL_rivers' }

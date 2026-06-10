@@ -27,7 +27,7 @@ let colombiaBoundary = new Image({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/wms',
         params: { 'LAYERS': 'gis:COL_adm0' }
     }),
-    visible: false
+    visible: true
 });
 
 // Colombia Administrative level 1
@@ -48,7 +48,7 @@ var colombiaRoads = new Image({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/wms',
         params: { 'LAYERS': 'gis:COL_roads' }
     }),
-    visible: false
+    visible: true
 });
 
 // Colombia Rivers
@@ -81,7 +81,7 @@ let overlayLayers = new Group({
 
 
 // Map Initialization
-let mapOrigin = fromLonLat([-74, 4.6]);
+let mapOrigin = fromLonLat([-74, 4.6]); // this is projected to EPSG:3857
 let zoomLevel = 5;
 let map = new Map({
     target: document.getElementById('map'),
@@ -89,9 +89,9 @@ let map = new Map({
     layers: [],
     view: new View({
         center: mapOrigin,
-        zoom: zoomLevel
-    }),
-    projection: 'EPSG:3857'
+        zoom: zoomLevel,
+        projection: 'EPSG:3857'
+    })
 });
 
 // Add the map controls here:
@@ -239,27 +239,7 @@ closer.onclick = function () {
 
 // Add the singleclick event code here
 map.on('singleclick', function (event) {
-    var feature = map.forEachFeatureAtPixel(
-        event.pixel, 
-        function (feature, layer) {
-            if(layer == staticGeoJSONLayer){
-                return feature;
-            }
-        }
-    );
-
-    if (feature != null) {
-        var pixel = event.pixel;
-        var coord = map.getCoordinateFromPixel(pixel);
-        popup.setPosition(coord);
-
-        content.innerHTML =
-            '<h5>Administrative Level 2</h5><br>' +
-            '<span>' +
-            feature.get('name_2') + ', ' +
-            feature.get('name_1')
-            '</span>';
-    }
+    // Add the singleclick event handler
 });
 
 // Add the pointermove event code here:
